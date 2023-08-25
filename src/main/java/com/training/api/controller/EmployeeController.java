@@ -9,12 +9,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.training.api.model.Employee;
 import com.training.api.service.EmployeeService;
 
 @RestController
+@RequestMapping("/api")
 public class EmployeeController {
 
 	@Autowired
@@ -36,7 +38,7 @@ public class EmployeeController {
 	 * @param id The id of the employee
 	 * @return An Employee object full filled
 	 */
-	@GetMapping("/employee/{id}")
+	@GetMapping("/employees/{id}")
 	public Employee getEmployee(@PathVariable("id") final Long id) {
 		Optional<Employee> employee = employeeService.getEmployee(id);
 		if(employee.isPresent()) {
